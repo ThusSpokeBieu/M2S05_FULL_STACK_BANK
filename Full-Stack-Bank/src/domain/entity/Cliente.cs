@@ -4,16 +4,17 @@ namespace FullStackBank.Domain.Entity;
 
 public abstract class Cliente
 {
-    public String Nome { get; private set; }
-    public String Email { get; private set; }
-    public String Telefone { get; private set; }
-    public String Endereço { get; private set; }
-    public String Conta { get; private set; }
-    public String Senha { get; private set; }
-    public Decimal Saldo { get; private set; }
-    public DateTime CriadoEm { get; private set; }
-    public DateTime AtualizadoEm { get; private set; }
-    public Boolean Desativado { get; private set; }
+    public long Id { get; protected set; }
+    public String Nome { get; protected set; }
+    public String Email { get; protected set; }
+    public String Telefone { get; protected set; }
+    public String Endereço { get; protected set; }
+    public String Conta { get; protected set; }
+    public String Senha { get; protected set; }
+    public Decimal Saldo { get; protected set; }
+    public DateTime CriadoEm { get; protected set; }
+    public DateTime AtualizadoEm { get; protected set; }
+    public Boolean Desativado { get; protected set; }
 
     public virtual void ResumoCliente() {
       AnsiConsole.MarkupLine(
@@ -27,7 +28,7 @@ public abstract class Cliente
         );
     }
 
-    public void ResumoTitulo() {
+    protected void ResumoTitulo() {
       var rule = new Rule("Resumo do Cliente");
       rule.LeftJustified();
       rule.RuleStyle("green");
