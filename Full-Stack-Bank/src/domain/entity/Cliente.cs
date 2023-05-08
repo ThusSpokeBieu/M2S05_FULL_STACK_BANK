@@ -5,7 +5,6 @@ namespace FullStackBank.Domain.Entity;
 public abstract class Cliente
 {
     public String Nome { get; private set; }
-    public DateTime DataDeNascimento { get; private set; }
     public String Email { get; private set; }
     public String Telefone { get; private set; }
     public String Endereço { get; private set; }
@@ -18,18 +17,17 @@ public abstract class Cliente
 
     public virtual void ResumoCliente() {
       AnsiConsole.MarkupLine(
-        $"Nome do Cliente: {Nome}" +
-        $"Data de Nascimento: {String.Format("{0:dd/MM/yyyy}", DataDeNascimento)}" +
-        $"Email do Cliente: {Email}" +
-        $"Telefone do Cliente: {Telefone}" +
-        $"Endereço do Cliente: {Endereço} \n \n" +
-        $"Número da Conta: {Conta}" +
-        $"Saldo: {CurrencyUtil.EmReal(Saldo)}" +
-        $"Data de criação: {String.Format("{0:dd/MM/yyyy HH:mm:ss}", CriadoEm)}"
+        $"Nome do Cliente: {Nome} \n" +
+        $"Email do Cliente: {Email} \n" +
+        $"Telefone do Cliente: {Telefone} \n" +
+        $"Endereço do Cliente: {Endereço} \n \n \n" +
+        $"Número da Conta: {Conta}\n" +
+        $"Saldo: {CurrencyUtil.EmReal(Saldo)}\n" +
+        $"Data de criação da Conta: {String.Format("{0:dd/MM/yyyy HH:mm:ss}", CriadoEm)}\n"
         );
     }
 
-    private void ResumoTitulo() {
+    public void ResumoTitulo() {
       var rule = new Rule("Resumo do Cliente");
       rule.LeftJustified();
       rule.RuleStyle("green");
