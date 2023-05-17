@@ -17,6 +17,12 @@ public class PessoaFisicaRepository
       new PessoaFisica(1002, "9876-5", PessoaFisicaDtoList.InitialDB[2]),
     };
 
+    public void GetAll() {
+      foreach(PessoaFisica p in PessoaFisicaDB) {
+        p.ResumoCliente();
+      }
+    }
+
     public PessoaFisica? GetPessoaFisicaById(long id) {
       return PessoaFisicaDB.FirstOrDefault(pf => pf.Id == id);
     }
